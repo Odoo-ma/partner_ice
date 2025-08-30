@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_invoice_document_custom" inherit_id="account.report_invoice_document">
+        
+        <!-- Cas 1: Adresse différente de l'adresse de livraison -->
+        <xpath expr="//div[@name='address_not_same_as_shipping']//address" position="after">
+            <div t-if="o.partner_id.ice" class="mt-2">
+                <strong>ICE :</strong> <span t-field="o.partner_id.ice"/>
+            </div>
+        </xpath>
+        
+        <!-- Cas 2: Adresse identique à l'adresse de livraison -->
+        <xpath expr="//div[@name='address_same_as_shipping']//address" position="after">
+            <div t-if="o.partner_id.ice" class="mt-2">
+                <strong>ICE :</strong> <span t-field="o.partner_id.ice"/>
+            </div>
+        </xpath>
+
+        <!-- Montant en lettres juste après le bloc des totaux --> 
+        <xpath expr="//div[@class='clearfix mb-4']" position="after">
+            <t t-if="o.amount_total_words">
+                <div style="margin-top: 10px;">
+                    <strong>Arrêtée la présente facture à la somme de :</strong>
+                    <span t-esc="o.amount_total_words"/>
+                </div>
+            </t>
+        </xpath>
+
+    </template>
+</odoo>

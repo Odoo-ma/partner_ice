@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_partner_ice_partner_ice,partner_ice.partner_ice,model_partner_ice_partner_ice,base.group_user,1,1,1,1
